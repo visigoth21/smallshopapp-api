@@ -1,0 +1,42 @@
+<?php 
+//-----------------------------------------------------------------------------------------------//
+class LoaderGateway
+{
+    private PDO $conn;
+//-----------------------------------------------------------------------------------------------//
+    public function __construct(Database $database)
+    {
+        $this->conn = $database->getConnection();
+    }
+//-----------------------------------------------------------------------------------------------//    
+    public function checkByID(string $upc, string $part)
+    {
+        $sql = "SELECT DISTINCT * FROM pricelist WHERE pricelist.part_number = :vpart AND pricelist.upc = :vupc"; 
+
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(":vupc", $upc, PDO::PARAM_STR_CHAR);    
+        $stmt->bindValue(":vpart", $part, PDO::PARAM_STR_CHAR);    
+        $stmt->execute();
+        $rowCount = $stmt->rowCount();
+        // create array to store returned items
+        $data = [];
+
+        if ($rowCount > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------//
+
+// id
+// part_number
+// upc
+// description
+// mfg
+// list
+// cost
+// supersedes_to
+// weight

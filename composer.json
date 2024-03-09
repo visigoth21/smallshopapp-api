@@ -1,0 +1,21 @@
+{
+    "name": "furryfeet/smallshopapp",
+    "description": "small shop ap install",
+    "type": "project",
+    "license": "mit",
+    "authors": [
+        {
+            "name": "ted brock"
+        }
+    ],
+    "minimum-stability": "dev",
+  "require": {
+    "guzzlehttp/guzzle": "^7.5",
+    "vlucas/phpdotenv": "^5.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "api/v1/src/"
+    }
+  }
+}

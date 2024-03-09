@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <title>Search</title>
+    <script src="./src/jquery-3.6.4/jquery-3.6.4.min.js"></script>
+    <style>
+      .edit-btn { display: inline;
+                    padding-top: 5px;
+                    padding-right: 5px;
+                    padding-bottom: 5px;
+                    padding-left: 5px;}
+      .delete-btn { display: inline; 
+                    padding-top: 5px;
+                    padding-right: 5px;
+                    padding-bottom: 5px;
+                    padding-left: 5px;}
+    </style>
+  </head>
+  <body>
+    <div class="container box">
+      <nav class="navbar navbar-expand-md bg-light navbar-light justify-content-center">
+        <div class="container-fluid">
+          <div class="navbar-brand">
+            <img src="./i/brand.gif" width="50"> Small Shop App
+          </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="index.php" class="nav-link ">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="search.html" class="nav-link">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="register.php" class="nav-link ">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="test.html" class="nav-link">test</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="#" class="nav-link active">Test 2</a>
+                    </li>
+                    <li class="nav-item">
+                      <a href="test3.html" class="nav-link ">Test 3</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+        <br>
+      <div class="container box" id="sysContainer">
+        <label for="inputValue">Search  </label>
+        <input type="text" id="inputValue" title="Search for UPC or Part Number">
+        <button id="search-btn">Load</button>
+        <br><br>
+        <div class="container box"></div>
+          <table id="item-table" class="table table-striped">
+            <thead>
+              <tr>
+                <td colspan="9" id="choice"></td>
+              </tr>
+              <tr>
+                <th class="col-xs-1"></th>
+                <th hidden></th>
+                <th style="width: 180px;">Part Number</th>
+                <th style="width: 190px;">UPC</th>
+                <th style="width: 450px;">Description</th>
+                <th style="width: 140px;">List</th>
+                <th style="width: 100px;">Quantity</th>
+                <th>Total</th>
+                <th id="top-total"></th>
+                <th hidden></th>
+              </tr>
+              <tr>
+                <td></td>
+                <td hidden><input type="text" id="line-input" placeholder="Id"></td>
+                <td><input type="text" id="part-input" placeholder="Part number" class="form-control"></td>
+                <td><input type="text" id="upc-input" placeholder="UPC code" class="form-control"></td>
+                <td><input type="text" id="description-input" placeholder="Description" class="form-control"></td>
+                <td><input type="number" id="list-input" placeholder="0.00" class="form-control"></td>
+                <td><input type="number" id="quantity-input" placeholder="1" class="form-control"></td>
+                <td></td>
+                <td><div id="add-btn" title="Add item"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-square-fill" viewBox="0 0 16 16">
+                  <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 4.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3a.5.5 0 0 1 1 0z"/>
+                </svg></div></td>
+                <td hidden><input type="text" id="id-input" placeholder="0"></td>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="6" id="choice"></td>
+                <td id="invoice-total">0.00</td>
+                <td colspan="2"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    <script src="./src/test2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+//file reading
+
+<?php
+// Open the CSV file for reading
+$handle = fopen("data.csv", "r");
+
+// Iterate through each row of the CSV file
+while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+
+    // Insert the row into the database table
+    $query = "INSERT INTO table_name (column1, column2, column3) VALUES ('$data[0]', '$data[1]', '$data[2]')";
+    mysqli_query($con, $query);
+}
+
+// Close the CSV file
+fclose($handle);
+?>
+
+
+
+//or
+
+
+$file = new SplFileObject('test.csv', 'r');
+$file->seek(PHP_INT_MAX);
+echo $file->key() + 1;
+$file->rewind();
+
+
+//windows flags
+//$file->setFlags(SplFileObject::READ_AHEAD | SplFileObject::SKIP_EMPTY | SplFileObject::DROP_NEW_LINE);
+
+//-------------------------------------------------------------------------------
+
+
+let arr = [
+  { id: 1, name: "John" },
+  { id: 2, name: "Mary" },
+  { id: 3, name: "Peter" }
+];
+
+let valueToDelete = "Mary";
+
+let index = arr.findIndex(element => element.name === valueToDelete);
+
+if (index !== -1) {
+  arr.splice(index, 1);
+}
+
+INSERT INTO table_name (part_number, column1, column2, ...)
+VALUES (value1, value2, value3, ...)
+ON DUPLICATE KEY UPDATE
+column1 = value2,
+column2 = value3,
+...;
+This statement uses the INSERT INTO ... ON DUPLICATE KEY UPDATE syntax, 
+which inserts a new row if the part number is not found in the table, 
+or updates the existing row if the part number is found. The part 
+number column must be defined as a primary key or a unique index in the 
+table for this to work.
+
+To check rows in a MySQL table against two column values and update the remaining columns if the row exists or add a new row if it is not found, you can use the INSERT ... ON DUPLICATE KEY UPDATE statement.
+
+Here's an example SQL query:
+
+sql
+Copy code
+
+
+INSERT INTO table_name (column1, column2, column3, column4)
+VALUES (value1, value2, value3, value4)
+ON DUPLICATE KEY UPDATE column3 = value3, column4 = value4;
+
+
+
+Replace table_name with the name of your table and specify the corresponding column names (column1, column2, column3, column4) and their respective values (value1, value2, value3, value4).
+
+To make this work, you need to create a unique index or a unique constraint on the combination of the two columns that you want to check for duplicates. This ensures that MySQL detects conflicts when inserting new rows.
+
+For example, if you want to check against columns column1 and column2, you can add a unique index or a unique constraint using the following statement:
+
+sql
+Copy code
+
+
+ALTER TABLE table_name
+ADD CONSTRAINT unique_constraint_name UNIQUE (column1, column2);
+
+
+Replace table_name with the name of your table, and unique_constraint_name with a meaningful name for your unique constraint.
+
+By doing so, if a row with the same values in column1 and column2 already exists, the ON DUPLICATE KEY UPDATE part of the query will be triggered. It will update the remaining columns (column3 and column4) with the new values. If the row doesn't exist, a new row will be inserted with the provided values.
+
+Remember to adjust the column names, table name, and values based on your specific situation.
+

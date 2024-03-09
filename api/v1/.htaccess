@@ -1,0 +1,43 @@
+php_flag display_errors on 
+
+RewriteEngine On 
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l 
+
+RewriteRule ^login$ login.php [L]
+RewriteRule ^refresh$ refresh.php [L]
+RewriteRule ^logout$ logout.php [L]
+RewriteRule ^search$ index.php [L]
+RewriteRule ^search(.+)$ index.php$1 [L]
+RewriteRule ^mfgs$ index.php [L]
+RewriteRule ^mfgs(.+)$ index.php [L]
+#RewriteRule ^invoiceline$ index.php [L]
+#RewriteRule ^invoiceline(.+)$ index.php [L]
+RewriteRule ^invoice$ index.php [L]
+RewriteRule ^invoice(.+)$ index.php [L]
+RewriteRule ^zip$ index.php [L]
+RewriteRule ^zip(.+)$ index.php [L]
+RewriteRule ^store$ index.php [L]
+RewriteRule ^store(.+)$ index.php [L]
+RewriteRule ^customer$ index.php [L]
+RewriteRule ^customer(.+)$ index.php [L]
+RewriteRule ^customeraddress$ index.php [L]
+RewriteRule ^customeraddress(.+)$ index.php [L]
+
+
+
+SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+
+
+
+
+#Alternatively, you can define a group of allowed characters between []. To allow alphanumeric characters, underscores 
+#and dots, you could use RewriteRule ^u/([a-z0-9_\.]+)/?$ user.php?id=$1. 
+#Notice that the . has to be replaced in this instance, as it otherwise will be 
+#interpreted as the meta-character mentioned above and match any character.
+
+#You could also match any character except the /, which is particularly useful when matching URLs: 
+#RewriteRule ^u/([^/]+)/?$ user.php?id=$1. 
+#The leading ^ inside the [] makes the character group match anything except the listed characters, 
+#so in this case, anything except /.
